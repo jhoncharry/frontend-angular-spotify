@@ -47,7 +47,7 @@ export class MultimediaService {
         this.playerStatus$.next('playing');
         break;
       case 'ended':
-        this.playerStatus$.next('ended');
+        this.playerStatus$.next('paused');
         break;
       default:
         this.playerStatus$.next('paused');
@@ -56,9 +56,8 @@ export class MultimediaService {
   };
 
   private calculateTime = () => {
-    console.log('Disparando evento');
     const { duration, currentTime } = this.audio;
-    console.table([duration, currentTime]);
+
     this.setTimeElapsed(currentTime);
     this.setRemaining(currentTime, duration);
     this.setPercentage(currentTime, duration);
@@ -94,10 +93,20 @@ export class MultimediaService {
     }
   }
 
+  public completeBeah() {
+    this.audio.pause();
+    this.audio.src = '';
+
+    this.trackInfo$.next(undefined);
+    this.playerStatus$.next('paused');
+    this.timeElapsed$.next('00:00');
+    this.timeRemaining$.next('-00:00');
+  }
+
   //TODO: Funciones publicas
 
   public setAudio(track: TrackModel): void {
-    console.log('🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍', track);
+    // console.log('🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍', track);
     this.audio.src = track.url;
     this.audio.play();
   }
