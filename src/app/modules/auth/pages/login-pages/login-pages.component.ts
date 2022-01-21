@@ -17,7 +17,9 @@ export class LoginPagesComponent implements OnInit {
     private authService: AuthService,
     private cookie: CookieService,
     private router: Router
-  ) {}
+  ) {
+    console.log("2222222222222222");
+  }
 
   ngOnInit(): void {
     this.formLogin = new FormGroup({
