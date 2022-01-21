@@ -17,17 +17,12 @@ export class LoginPagesComponent implements OnInit {
     private authService: AuthService,
     private cookie: CookieService,
     private router: Router
-  ) {
-    console.log("2222222222222222");
-  }
+  ) {}
 
   ngOnInit(): void {
     this.formLogin = new FormGroup({
-      email: new FormControl('test@test.com', [
-        Validators.required,
-        Validators.email,
-      ]),
-      password: new FormControl('12345678', [
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(12),
