@@ -13,6 +13,7 @@ const routes: Routes = [
     path: '',
     component: HomePageComponent,
     canActivate: [SessionGuard],
+    canLoad: [SessionGuard],
     loadChildren: () =>
       import(`./modules/home/home.module`).then((m) => m.HomeModule),
   },
