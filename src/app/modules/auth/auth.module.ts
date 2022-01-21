@@ -9,4 +9,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [LoginPagesComponent],
   imports: [CommonModule, AuthRoutingModule, ReactiveFormsModule],
 })
-export class AuthModule {}
+export class AuthModule {
+  constructor(){
+    console.log("666666666666666666");
+  }
+}
